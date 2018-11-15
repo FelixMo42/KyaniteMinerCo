@@ -1,52 +1,21 @@
-<h1>Kyanite Miner Co.</h1>
+<head>
+	<title>Kyanite Miner Co.</title>
 
-<div>
-	<div style="float:left;">
-		<img src="mine.jpg" onclick="addMoney(1)">
-	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+</head>
+<body>
+	<h1>Kyanite Miner Co.</h1>
 
 	<div>
-		<p>Money: <span id="money">122</span>$</p>
-		<p>Money/Sec: <span id="moneyPerSec">122</span>$</p>
-		<button onclick="getMinner()">Get minner (cost: 5$)</button><br>
-		<button onclick="getDrill()">Get Drill (cost: 100$)</button>
+		<div style="float:left;" id="img"></div>
+
+		<div>
+			<p>Money: <span id="money">0</span>$</p>
+			<p>Money/Sec: <span id="moneyPerSec">0</span>$</p>
+			<button onclick="getMinner()">Get minner (cost: 5$)</button><br>
+			<button onclick="getDrill()">Get Drill (cost: 100$)</button>
+		</div>
 	</div>
-</div>
 
-<script>
-	money = 0
-	moneyPerSec = 0
-
-	function addMoney(amu) {
-		money += amu
-		document.getElementById("money").innerHTML = Math.floor(money * 100) / 100
-	}
-	function addMoneyPerSec(amu) {
-		moneyPerSec += amu
-		document.getElementById("moneyPerSec").innerHTML = Math.floor(moneyPerSec * 100) / 100
-	}
-
-	function getMinner() {
-		if (money < 5) {return}
-		addMoney(-5)
-		addMoneyPerSec(1)
-	}
-	function getDrill() {
-		if (money < 100) {return}
-		addMoney(-100)
-		addMoneyPerSec(10)
-	}
-
-	addMoney(0)
-
-	function loop() {
-		var now = Date.now()
-		var dt = (now - lastUpdate) / 1000
-		lastUpdate = now
-
-		addMoney(moneyPerSec * dt)
-	}
-
-	lastUpdate = Date.now()
-	var t = setInterval(loop, 1000 / 30);
-</script>
+	<script src="script.js"></script>
+</body>
