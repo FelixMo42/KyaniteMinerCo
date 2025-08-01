@@ -1,21 +1,114 @@
+<!DOCTYPE html>
+
+<html>
+
 <head>
-	<title>Kyanite Miner Co.</title>
+    <title>Idle</title>
+    <style>
+        :root {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: x-large;
+        }
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.1/p5.js"></script>
+        main {
+            width: 800px;
+            margin: auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .year {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 10px;
+        }
+
+        .year label {
+            padding: 5px;
+            background-color: lightblue;
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            height: 75px;
+        }
+
+        .year .icon {
+            min-height: 85px;
+            min-width: 85px;
+
+            max-height: 85px;
+            max-width: 85px;
+
+            background-color: darkred;
+
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+            margin-right: 10px;
+        }
+
+        h1 {
+            font-size: 1.4em;
+            border-bottom: 1px solid black;
+        }
+
+        ol {
+            margin: 0px;
+        }
+    </style>
 </head>
+
 <body>
-	<h1>Kyanite Miner Co.</h1>
+    <main>
+        <h1>SSS Class Idle Game</h1>
 
-	<div>
-		<div style="float:left;" id="img"></div>
-
-		<div>
-			<p>Money: <span id="money">0</span>$</p>
-			<p>Money/Sec: <span id="moneyPerSec">0</span>$</p>
-			<button onclick="getMinner()">Get minner (cost: 5$)</button><br>
-			<button onclick="getDrill()">Get Drill (cost: 100$)</button>
-		</div>
-	</div>
-
-	<script src="script.js"></script>
+        <div class="year">
+            <label>0</label>
+            <div class="icon"></div>
+            <div>
+                You are pulled screaming from your mother's body.
+                You're parents are poor but loving farmers living on the 1st floor of <b>The Tower of Gilgamish</b>.
+                You are <b>Rio Calevanti</b>!
+            </div>
+        </div>
+    </main>
 </body>
+
+<script>
+
+const main = document.querySelector("main")
+
+main.appendChild(create(7))
+
+function create(year) {
+    return html`
+        <div class="year">
+            <label>${year}</label>
+            <div class="icon"></div>
+            <div>
+                What hobby would you like?
+            </div>
+        </div>
+    `
+}
+
+function html(strings, ...values) {
+    // do string stuff
+    let text = strings[0]
+    for (let i = 0; i < values.length; i++) {
+        text += values[i]
+        text += strings[i + 1]
+    }
+
+    console.log(text)
+
+    // create the element
+    const d = document.createElement("div")
+    d.innerHTML = text.trim()
+    return d.children[0]
+}
+
+</script>
+
+</html>
